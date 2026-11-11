@@ -46,3 +46,4 @@ Ein schneller 3D-Top-Down / Arena-Survivor in Godot 4, der den Übergang von 2D-
 ```bash
 godot --headless -s test_gameplay.gd
 ```
+

@@ -100,3 +100,4 @@ func clear() -> void:
 	_available_indices.clear()
 	_active_count = 0
 	max_capacity = 0
+
