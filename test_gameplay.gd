@@ -215,6 +215,28 @@ func test_player_kinematics_and_weapons() -> bool:
 		player.free()
 		return false
 
+	if player.head == null or player.camera == null:
+		print("  -> First-Person Kamera oder Kopf-Node fehlt!")
+		player.free()
+		return false
+
+	if player.current_view != Player3D.ViewMode.FIRST_PERSON:
+		print("  -> Standard-Perspektive ist nicht FIRST_PERSON!")
+		player.free()
+		return false
+
+	player.toggle_view_mode()
+	if player.current_view != Player3D.ViewMode.THIRD_PERSON_OVERVIEW:
+		print("  -> Umschalten auf Übersichtskamera fehlgeschlagen!")
+		player.free()
+		return false
+
+	player.toggle_view_mode()
+	if player.current_view != Player3D.ViewMode.FIRST_PERSON:
+		print("  -> Zurückschalten auf Ego-Perspektive fehlgeschlagen!")
+		player.free()
+		return false
+
 	player.free()
 	return true
 

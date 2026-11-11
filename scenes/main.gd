@@ -1,8 +1,8 @@
 class_name MainArena
 extends Node3D
 
-## MainArena: 3D Cyber Arena Hauptszene
-## Demonstriert VGLC-Vektor-Extrusion, allokationsfreie 3D-Pools und Quaternion-Kinematik.
+## MainArena: 3D Cyber Arena Hauptszene (Ego-Shooter / First-Person Perspective)
+## Demonstriert VGLC-Vektor-Extrusion, allokationsfreie 3D-Pools, Ego-Kamera und Strafe-Kinematik.
 
 const VGLCVectorParser = preload("res://core/vglc_vector_parser.gd")
 const ObjectPool3D = preload("res://core/object_pool_3d.gd")
@@ -25,12 +25,21 @@ var projectile_pool: ObjectPool3D = null
 var drone_pool: ObjectPool3D = null
 var player: Player3D = null
 var drone_swarm: DroneSwarm = null
-var camera: Camera3D = null
 
 # HUD
 var hud_layer: CanvasLayer = null
 var stats_label: Label = null
 var game_over_panel: Panel = null
+var crosshair: Control = null
+
+class Crosshair extends Control:
+	func _draw() -> void:
+		var col = Color(0.2, 1.0, 0.4, 0.85)
+		draw_line(Vector2(-12, 0), Vector2(-4, 0), col, 2.0)
+		draw_line(Vector2(4, 0), Vector2(12, 0), col, 2.0)
+		draw_line(Vector2(0, -12), Vector2(0, -4), col, 2.0)
+		draw_line(Vector2(0, 4), Vector2(0, 12), col, 2.0)
+		draw_circle(Vector2.ZERO, 1.5, col)
 
 func _ready() -> void:
 	_setup_world_containers()
@@ -38,7 +47,6 @@ func _ready() -> void:
 	_load_vector_arena()
 	_setup_object_pools()
 	_setup_player()
-	_setup_camera()
 	_setup_swarm()
 	_setup_hud()
 
@@ -64,7 +72,7 @@ func _setup_lighting_and_environment() -> void:
 	sky_env.background_mode = Environment.BG_COLOR
 	sky_env.background_color = Color(0.04, 0.06, 0.1)
 	sky_env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	sky_env.ambient_light_color = Color(0.12, 0.15, 0.22)
+	sky_env.ambient_light_color = Color(0.15, 0.18, 0.25)
 	env.environment = sky_env
 	add_child(env)
 
@@ -116,16 +124,7 @@ func _setup_player() -> void:
 	player.position = vector_parser.player_start_pos
 	player.fired_projectile.connect(_on_player_fired)
 	player.died.connect(_on_player_died)
-
-func _setup_camera() -> void:
-	camera = Camera3D.new()
-	camera.fov = 50.0
-	add_child(camera)
-	var cam_pos = player.position + Vector3(0, 24.0, 16.0)
-	if camera.is_inside_tree():
-		camera.look_at_from_position(cam_pos, player.position, Vector3.UP)
-	else:
-		camera.position = cam_pos
+	player.perspective_changed.connect(_on_perspective_changed)
 
 func _setup_swarm() -> void:
 	var spawners: Array[Vector3] = []
@@ -142,13 +141,18 @@ func _setup_hud() -> void:
 	hud_layer.name = "HUDLayer"
 	add_child(hud_layer)
 
+	# Fadenkreuz im Bildschirmzentrum
+	crosshair = Crosshair.new()
+	crosshair.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	hud_layer.add_child(crosshair)
+
 	var panel = PanelContainer.new()
-	panel.custom_minimum_size = Vector2(1240, 70)
+	panel.custom_minimum_size = Vector2(1240, 80)
 	panel.position = Vector2(20, 15)
 	hud_layer.add_child(panel)
 
 	stats_label = Label.new()
-	stats_label.add_theme_font_size_override("font_size", 14)
+	stats_label.add_theme_font_size_override("font_size", 13)
 	panel.add_child(stats_label)
 
 	# Game Over Banner
@@ -183,30 +187,14 @@ func _on_player_fired(spawn_pos: Vector3, shoot_dir: Vector3) -> void:
 
 func _on_player_died() -> void:
 	game_over_panel.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func _on_perspective_changed(is_first_person: bool) -> void:
+	if crosshair:
+		crosshair.visible = is_first_person
 
 func _process(_delta: float) -> void:
-	_update_camera_tracking()
-	_update_mouse_aiming()
 	_update_hud_stats()
-
-func _update_camera_tracking() -> void:
-	if is_instance_valid(player) and is_instance_valid(camera):
-		var target_pos = player.global_position + Vector3(0, 24.0, 16.0)
-		camera.global_position = camera.global_position.lerp(target_pos, 0.1)
-
-func _update_mouse_aiming() -> void:
-	if not is_instance_valid(player) or not is_instance_valid(camera) or player.current_health <= 0:
-		return
-
-	var mouse_pos = get_viewport().get_mouse_position()
-	var ray_origin = camera.project_ray_origin(mouse_pos)
-	var ray_dir = camera.project_ray_normal(mouse_pos)
-
-	# Schnittpunkt mit XZ-Ebene (Y=0)
-	var ground_plane = Plane(Vector3.UP, 0.0)
-	var intersection = ground_plane.intersects_ray(ray_origin, ray_dir)
-	if intersection != null:
-		player.aim_at_point(intersection)
 
 func _update_hud_stats() -> void:
 	if stats_label == null:
@@ -220,9 +208,10 @@ func _update_hud_stats() -> void:
 	var checks = drone_swarm.broadphase_checks_last_frame if drone_swarm else 0
 	var kills = drone_swarm.kills_count if drone_swarm else 0
 	var hp = player.current_health if player else 0
+	var view_str = "Ego-Perspektive" if (player and player.current_view == Player3D.ViewMode.FIRST_PERSON) else "3D-Aufsicht"
 
-	stats_label.text = "Cyber Arena 3D | FPS: %d | HP: %d/10 | Kills: %d\nPools: Geschosse %d/%d | Drohnen %d/%d | Sphere-Broadphase Prüfungen/Frame: %d | [WASD/Pfeile] Bewegen | [Klick/Space] Feuer | [R] Reset" % [
-		fps, hp, kills, p_act, p_cap, d_act, d_cap, checks
+	stats_label.text = "Cyber Arena 3D [%s] | FPS: %d | HP: %d/10 | Kills: %d | Pools: Geschosse %d/%d, Drohnen %d/%d | Sphere-Checks/Frame: %d\n[Maus] Umschauen | [WASD] Bewegen & Strafen | [Klick/Leertaste] Schießen | [V] Perspektive (Ego/3D-Aufsicht) | [ESC] Maus freigeben | [R] Reset" % [
+		view_str, fps, hp, kills, p_act, p_cap, d_act, d_cap, checks
 	]
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -235,5 +224,6 @@ func _restart_arena() -> void:
 	if drone_swarm:
 		drone_swarm.reset_all()
 	if player:
-		player.global_position = vector_parser.player_start_pos
+		player.position = vector_parser.player_start_pos
 		player.current_health = player.max_health
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
