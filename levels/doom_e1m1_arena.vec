@@ -1,0 +1,44 @@
+# VGLC Vector Format (Summerville et al., 2016)
+# Format Linedef: LINE x1 y1 x2 y2 floor_height ceil_height [flags]
+# Format Thing:   THING x y z type angle
+# Maßeinheiten: Meter im kontinuierlichen 3D-Raum
+
+# --- Äußerer Arena-Perimeter (40m x 40m) ---
+LINE -20.0 -20.0  20.0 -20.0  0.0 5.0 wall_solid
+LINE  20.0 -20.0  20.0  20.0  0.0 5.0 wall_solid
+LINE  20.0  20.0 -20.0  20.0  0.0 5.0 wall_solid
+LINE -20.0  20.0 -20.0 -20.0  0.0 5.0 wall_solid
+
+# --- Zentrales Hexagon-Podest / Hindernis ---
+LINE -4.0 -2.0  -2.0 -4.0  0.0 3.0 pillar
+LINE -2.0 -4.0   2.0 -4.0  0.0 3.0 pillar
+LINE  2.0 -4.0   4.0 -2.0  0.0 3.0 pillar
+LINE  4.0 -2.0   4.0  2.0  0.0 3.0 pillar
+LINE  4.0  2.0   2.0  4.0  0.0 3.0 pillar
+LINE  2.0  4.0  -2.0  4.0  0.0 3.0 pillar
+LINE -2.0  4.0  -4.0  2.0  0.0 3.0 pillar
+LINE -4.0  2.0  -4.0 -2.0  0.0 3.0 pillar
+
+# --- Westliche Deckung (L-Wand) ---
+LINE -12.0 -10.0 -8.0 -10.0  0.0 2.5 cover
+LINE -12.0 -10.0 -12.0 -6.0  0.0 2.5 cover
+
+# --- Östliche Deckung (L-Wand) ---
+LINE 12.0 10.0 8.0 10.0  0.0 2.5 cover
+LINE 12.0 10.0 12.0 6.0  0.0 2.5 cover
+
+# --- Südliche Barrikade ---
+LINE -6.0 14.0  6.0 14.0  0.0 2.0 barricade
+
+# --- Nördliche Barrikade ---
+LINE -6.0 -14.0 6.0 -14.0 0.0 2.0 barricade
+
+# --- Things (Player Start & Drohnen-Spawns) ---
+# Type 1 = Player Start, Type 2 = Cyber Drone Spawner, Type 3 = Powerup / Ammo
+THING 0.0 0.0 0.5 1 0.0
+THING -15.0 -15.0 1.0 2 45.0
+THING  15.0 -15.0 1.0 2 135.0
+THING  15.0  15.0 1.0 2 225.0
+THING -15.0  15.0 1.0 2 315.0
+THING 0.0 -10.0 0.5 3 0.0
+THING 0.0  10.0 0.5 3 0.0
