@@ -127,7 +127,47 @@ func generate_wall_mesh() -> ArrayMesh:
 		st.set_uv(Vector2(0, 1))
 		st.add_vertex(v3)
 
+		# Rückseite Dreieck 1 (v1, v0, v3)
+		var back_normal = -wall_normal
+		st.set_normal(back_normal)
+		st.set_uv(Vector2(1, 0))
+		st.add_vertex(v1)
+
+		st.set_normal(back_normal)
+		st.set_uv(Vector2(0, 0))
+		st.add_vertex(v0)
+
+		st.set_normal(back_normal)
+		st.set_uv(Vector2(0, 1))
+		st.add_vertex(v3)
+
+		# Rückseite Dreieck 2 (v1, v3, v2)
+		st.set_normal(back_normal)
+		st.set_uv(Vector2(1, 0))
+		st.add_vertex(v1)
+
+		st.set_normal(back_normal)
+		st.set_uv(Vector2(0, 1))
+		st.add_vertex(v3)
+
+		st.set_normal(back_normal)
+		st.set_uv(Vector2(1, 1))
+		st.add_vertex(v2)
+
 	return st.commit()
+
+## Berechnet die Bounding Box der 2D-Vektorlinien [min_p, max_p]
+func get_bounds() -> Array[Vector2]:
+	if lines.is_empty():
+		return [Vector2(-20, -20), Vector2(20, 20)]
+	var min_p = lines[0].start_pos
+	var max_p = lines[0].start_pos
+	for l in lines:
+		min_p.x = minf(min_p.x, minf(l.start_pos.x, l.end_pos.x))
+		min_p.y = minf(min_p.y, minf(l.start_pos.y, l.end_pos.y))
+		max_p.x = maxf(max_p.x, maxf(l.start_pos.x, l.end_pos.x))
+		max_p.y = maxf(max_p.y, maxf(l.start_pos.y, l.end_pos.y))
+	return [min_p, max_p]
 
 ## Erzeugt einen StaticBody3D mit Wand-Kollisionsformen für die Physik
 func build_wall_collision_body() -> StaticBody3D:

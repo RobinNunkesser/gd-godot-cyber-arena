@@ -82,16 +82,21 @@ func _load_vector_arena() -> void:
 		push_error("Fehler beim Laden der VGLC-Vektordatei!")
 		return
 
-	# 1. 3D-Boden generieren (44m x 44m)
+	# 1. 3D-Boden generieren dynamisch basierend auf Level-Bounding-Box
+	var bounds = vector_parser.get_bounds()
+	var center = (bounds[0] + bounds[1]) * 0.5
+	var size = (bounds[1] - bounds[0]) + Vector2(20.0, 20.0) # 10m Sicherheitsrand
+
 	var floor_mesh = PlaneMesh.new()
-	floor_mesh.size = Vector2(44.0, 44.0)
+	floor_mesh.size = size
 	var floor_mat = StandardMaterial3D.new()
-	floor_mat.albedo_color = Color(0.08, 0.1, 0.14)
+	floor_mat.albedo_color = Color(0.06, 0.08, 0.12)
 	floor_mat.roughness = 0.8
 	floor_mesh.material = floor_mat
 
 	var floor_instance = MeshInstance3D.new()
 	floor_instance.mesh = floor_mesh
+	floor_instance.position = Vector3(center.x, 0.0, center.y)
 	arena_container.add_child(floor_instance)
 
 	# 2. Extrudierte 3D-Wände aus VGLC-Linedefs
@@ -100,6 +105,7 @@ func _load_vector_arena() -> void:
 	wall_instance.mesh = wall_mesh
 
 	var wall_mat = StandardMaterial3D.new()
+	wall_mat.cull_mode = BaseMaterial3D.CULL_DISABLED
 	wall_mat.albedo_color = Color(0.18, 0.22, 0.3)
 	wall_mat.emission_enabled = true
 	wall_mat.emission = Color(0.1, 0.4, 0.7)

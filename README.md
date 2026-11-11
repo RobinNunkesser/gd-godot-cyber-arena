@@ -18,8 +18,8 @@ Ein 3D-Ego-Shooter (*First-Person Arena Survivor*) in Godot 4, der den Übergang
    - Umschaltbar via `[V]` zwischen First-Person und 3D-Aufsicht (*Overview*).
 
 2. **VGLC (*Video Game Level Corpus*) Vektor-Parser (`core/vglc_vector_parser.gd`):**
-   - Parst Doom-Vektorformate (`levels/doom_e1m1_arena.vec`) mit kontinuierlichen 2D-Linedefs (`LINE x1 y1 x2 y2 floor_h ceil_h`) und Things (`THING x y z type angle`).
-   - Generiert über Godots `SurfaceTool` in Echtzeit ein nahtloses 3D-ArrayMesh mit Normalen und UVs sowie statischen Physik-Kollisionskörpern (`StaticBody3D`).
+   - Parst Doom-Vektorformate (`levels/doom_e1m1_arena.vec`, direkt aus VGLC `E1M1.svg` abgeleitet) mit 316 kontinuierlichen 2D-Linedefs (`LINE x1 y1 x2 y2 floor_h ceil_h`) und 99 Things (`THING x y z type angle`).
+   - Generiert über Godots `SurfaceTool` in Echtzeit ein nahtloses doppelseitiges 3D-ArrayMesh mit Normalen und UVs sowie statischen Physik-Kollisionskörpern (`StaticBody3D`) für den ikonischen E1M1 Hangar mit seinen zentralen Säulen, Korridoren und Nischen.
 
 3. **Allokationsfreies Object-Pooling (`core/object_pool_3d.gd`):**
    - Garantiert strikt $\mathcal{O}(0)$ Allokationen in der Render- und Physikschleife (`_physics_process`).

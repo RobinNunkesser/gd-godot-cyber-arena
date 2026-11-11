@@ -1,45 +1,422 @@
 # VGLC Vector Format (Summerville et al., 2016)
-# Format Linedef: LINE x1 y1 x2 y2 floor_height ceil_height [flags]
+# Official Doom E1M1 (Hangar) converted directly from VGLC Processed - Vectorized/E1M1.svg
+# Format Linedef: LINE x1 y1 x2 y2 floor_height ceil_height flag
 # Format Thing:   THING x y z type angle
-# Maßeinheiten: Meter im kontinuierlichen 3D-Raum
+# Scale: 0.035 m/unit, Player Start at (0.0, 0.0)
 
-# --- Äußerer Arena-Perimeter (40m x 40m) ---
-LINE -20.0 -20.0  20.0 -20.0  0.0 5.0 wall_solid
-LINE  20.0 -20.0  20.0  20.0  0.0 5.0 wall_solid
-LINE  20.0  20.0 -20.0  20.0  0.0 5.0 wall_solid
-LINE -20.0  20.0 -20.0 -20.0  0.0 5.0 wall_solid
+LINE 1.12 -2.24 -1.12 -2.24 0.0 3.2 wall_solid
+LINE -1.12 -2.24 -1.12 -1.12 0.0 3.2 wall_solid
+LINE 1.12 -1.12 1.12 -2.24 0.0 3.2 wall_solid
+LINE 3.36 -1.12 1.12 -1.12 0.0 3.2 wall_solid
+LINE -1.12 -1.12 -3.36 -1.12 0.0 3.2 wall_solid
+LINE 7.84 2.24 3.36 -1.12 0.0 3.2 wall_solid
+LINE -3.36 -1.12 -7.84 2.24 0.0 3.2 wall_solid
+LINE 10.08 2.24 7.84 2.24 0.0 3.2 wall_solid
+LINE -7.84 2.24 -12.32 2.24 0.0 3.2 wall_solid
+LINE -5.60 7.84 -4.48 7.84 0.0 3.2 wall_solid
+LINE -4.48 7.84 -4.48 8.96 0.0 3.2 wall_solid
+LINE -4.48 8.96 -5.60 8.96 0.0 3.2 wall_solid
+LINE -5.60 8.96 -5.60 7.84 0.0 3.2 wall_solid
+LINE 4.48 7.84 5.60 7.84 0.0 3.2 wall_solid
+LINE 5.60 7.84 5.60 8.96 0.0 3.2 wall_solid
+LINE 5.60 8.96 4.48 8.96 0.0 3.2 wall_solid
+LINE 4.48 8.96 4.48 7.84 0.0 3.2 wall_solid
+LINE -5.60 19.04 -5.60 17.92 0.0 3.2 wall_solid
+LINE -5.60 17.92 -4.48 17.92 0.0 3.2 wall_solid
+LINE -4.48 17.92 -4.48 19.04 0.0 3.2 wall_solid
+LINE -4.48 19.04 -5.60 19.04 0.0 3.2 wall_solid
+LINE 5.60 19.04 4.48 19.04 0.0 3.2 wall_solid
+LINE 4.48 19.04 4.48 17.92 0.0 3.2 wall_solid
+LINE 4.48 17.92 5.60 17.92 0.0 3.2 wall_solid
+LINE 5.60 17.92 5.60 19.04 0.0 3.2 wall_solid
+LINE 10.08 14.56 10.08 12.32 0.0 3.2 wall_solid
+LINE 10.08 25.76 10.08 17.92 0.0 3.2 wall_solid
+LINE 10.08 12.32 11.20 12.32 0.0 3.2 wall_solid
+LINE 11.20 8.96 10.08 8.96 0.0 3.2 wall_solid
+LINE 11.20 14.56 10.08 14.56 0.0 3.2 wall_solid
+LINE 10.08 17.92 11.20 17.92 0.0 3.2 wall_solid
+LINE 11.20 12.32 11.20 14.56 0.0 3.2 wall_solid
+LINE 11.20 17.92 11.20 23.52 0.0 3.2 wall_solid
+LINE -12.32 23.52 -7.84 23.52 0.0 3.2 wall_solid
+LINE -7.84 23.52 -3.08 25.76 0.0 3.2 wall_solid
+LINE -3.08 25.76 5.60 25.76 0.0 3.2 wall_solid
+LINE 11.20 23.52 14.56 25.76 0.0 3.2 wall_solid
+LINE 16.52 -2.24 11.20 -1.12 0.0 3.2 wall_solid
+LINE 21.56 -4.48 16.52 -2.24 0.0 3.2 wall_solid
+LINE -12.32 2.24 -12.32 8.96 0.0 3.2 wall_solid
+LINE -12.32 17.92 -12.32 23.52 0.0 3.2 wall_solid
+LINE -19.04 10.08 -19.04 10.92 0.0 3.2 wall_solid
+LINE -19.04 15.96 -19.04 16.80 0.0 3.2 wall_solid
+LINE -19.04 16.80 -13.16 17.92 0.0 3.2 wall_solid
+LINE -13.16 17.92 -12.32 17.92 0.0 3.2 wall_solid
+LINE -12.32 8.96 -13.16 8.96 0.0 3.2 wall_solid
+LINE -13.16 8.96 -19.04 10.08 0.0 3.2 wall_solid
+LINE -19.04 10.92 -19.60 10.92 0.0 3.2 wall_solid
+LINE -19.60 15.96 -19.04 15.96 0.0 3.2 wall_solid
+LINE -19.60 10.92 -19.60 10.08 0.0 3.2 wall_solid
+LINE -19.60 10.08 -21.28 5.60 0.0 3.2 wall_solid
+LINE -21.28 5.60 -32.48 5.60 0.0 3.2 wall_solid
+LINE -32.48 21.28 -21.28 21.28 0.0 3.2 wall_solid
+LINE -19.60 16.80 -19.60 15.96 0.0 3.2 wall_solid
+LINE -21.28 21.28 -19.60 16.80 0.0 3.2 wall_solid
+LINE -34.72 19.04 -32.48 21.28 0.0 3.2 wall_solid
+LINE -32.48 5.60 -34.72 7.84 0.0 3.2 wall_solid
+LINE -34.72 7.84 -35.28 7.84 0.0 3.2 wall_solid
+LINE -35.28 7.84 -39.20 10.08 0.0 3.2 wall_solid
+LINE -39.20 16.80 -35.28 19.04 0.0 3.2 wall_solid
+LINE -35.28 19.04 -34.72 19.04 0.0 3.2 wall_solid
+LINE -45.92 10.08 -48.16 11.20 0.0 3.2 wall_solid
+LINE -48.16 15.68 -45.92 16.80 0.0 3.2 wall_solid
+LINE -41.44 17.36 -41.44 16.80 0.0 3.2 wall_solid
+LINE -45.92 16.80 -45.92 17.36 0.0 3.2 wall_solid
+LINE -45.92 9.52 -45.92 10.08 0.0 3.2 wall_solid
+LINE -41.44 10.08 -41.44 9.52 0.0 3.2 wall_solid
+LINE -48.16 11.20 -48.72 11.20 0.0 3.2 wall_solid
+LINE -48.72 15.68 -48.16 15.68 0.0 3.2 wall_solid
+LINE -45.92 17.36 -48.72 17.36 0.0 3.2 wall_solid
+LINE -48.72 17.36 -48.72 15.68 0.0 3.2 wall_solid
+LINE -48.72 11.20 -48.72 9.52 0.0 3.2 wall_solid
+LINE -48.72 9.52 -45.92 9.52 0.0 3.2 wall_solid
+LINE -41.44 9.52 -40.32 9.52 0.0 3.2 wall_solid
+LINE -40.32 9.52 -34.72 3.36 0.0 3.2 wall_solid
+LINE -40.32 17.36 -41.44 17.36 0.0 3.2 wall_solid
+LINE -34.72 23.52 -40.32 17.36 0.0 3.2 wall_solid
+LINE -34.72 28.00 -34.72 23.52 0.0 3.2 wall_solid
+LINE -34.72 3.36 -34.72 -1.12 0.0 3.2 wall_solid
+LINE -34.72 -1.12 -59.36 -1.12 0.0 3.2 wall_solid
+LINE -59.36 -1.12 -63.84 3.36 0.0 3.2 wall_solid
+LINE -63.84 3.36 -63.84 23.52 0.0 3.2 wall_solid
+LINE -63.84 23.52 -59.36 28.00 0.0 3.2 wall_solid
+LINE -59.36 28.00 -34.72 28.00 0.0 3.2 wall_solid
+LINE -41.44 16.80 -40.04 16.80 0.0 3.2 wall_solid
+LINE -40.04 16.80 -39.20 16.80 0.0 3.2 wall_solid
+LINE -39.20 10.08 -40.04 10.08 0.0 3.2 wall_solid
+LINE -40.04 10.08 -41.44 10.08 0.0 3.2 wall_solid
+LINE -25.76 19.04 -28.00 19.04 0.0 3.2 door
+LINE 5.60 25.76 6.72 38.08 0.0 3.2 wall_solid
+LINE 11.48 35.84 10.08 25.76 0.0 3.2 wall_solid
+LINE 14.56 36.96 11.48 35.84 0.0 3.2 wall_solid
+LINE 6.72 38.08 14.56 41.44 0.0 3.2 wall_solid
+LINE 16.80 41.44 16.80 36.96 0.0 3.2 door
+LINE 17.36 36.96 17.36 41.44 0.0 3.2 door
+LINE 16.80 36.96 14.56 36.96 0.0 3.2 wall_solid
+LINE 14.56 41.44 16.80 41.44 0.0 3.2 wall_solid
+LINE 16.80 41.44 17.36 41.44 0.0 3.2 wall_solid
+LINE 17.36 36.96 16.80 36.96 0.0 3.2 wall_solid
+LINE 21.28 36.96 17.36 36.96 0.0 3.2 wall_solid
+LINE 17.36 41.44 21.28 41.44 0.0 3.2 wall_solid
+LINE 58.80 -1.12 50.12 -4.48 0.0 3.2 wall_solid
+LINE 50.12 -4.48 41.44 -5.60 0.0 3.2 wall_solid
+LINE 32.48 -5.60 21.56 -4.48 0.0 3.2 wall_solid
+LINE 59.36 29.12 54.88 29.12 0.0 3.2 wall_solid
+LINE 51.24 36.96 59.36 36.96 0.0 3.2 wall_solid
+LINE 59.36 36.96 66.08 33.60 0.0 3.2 wall_solid
+LINE 63.84 24.64 63.84 25.76 0.0 3.2 wall_solid
+LINE 69.72 25.76 69.72 23.52 0.0 3.2 wall_solid
+LINE 59.36 19.88 59.36 24.64 0.0 3.2 wall_solid
+LINE 59.36 1.12 59.36 8.96 0.0 3.2 wall_solid
+LINE 58.80 8.96 58.80 -1.12 0.0 3.2 wall_solid
+LINE 59.36 8.96 58.80 8.96 0.0 3.2 wall_solid
+LINE 69.72 23.52 78.68 20.16 0.0 3.2 wall_solid
+LINE 77.28 0.00 70.56 -1.12 0.0 3.2 wall_solid
+LINE 66.08 -1.12 59.36 1.12 0.0 3.2 wall_solid
+LINE 70.56 -1.12 70.56 -13.44 0.0 3.2 wall_solid
+LINE 66.08 -5.60 66.08 -1.12 0.0 3.2 wall_solid
+LINE 80.36 1.68 77.28 0.00 0.0 3.2 wall_solid
+LINE 41.44 -5.60 40.32 -2.24 0.0 3.2 wall_solid
+LINE 40.32 -2.24 39.20 -2.24 0.0 3.2 wall_solid
+LINE 33.60 -2.24 32.48 -5.60 0.0 3.2 wall_solid
+LINE 34.72 -2.24 33.60 -2.24 0.0 3.2 wall_solid
+LINE 39.20 -5.60 39.20 -6.72 0.0 3.2 wall_solid
+LINE 39.20 -6.72 39.20 -7.84 0.0 3.2 wall_solid
+LINE 34.72 -6.72 34.72 -5.60 0.0 3.2 wall_solid
+LINE 34.72 -7.84 34.72 -6.72 0.0 3.2 wall_solid
+LINE 34.72 -8.96 34.72 -7.84 0.0 3.2 wall_solid
+LINE 34.72 -10.08 34.72 -8.96 0.0 3.2 wall_solid
+LINE 39.20 -7.84 39.20 -8.96 0.0 3.2 wall_solid
+LINE 39.20 -8.96 39.20 -10.08 0.0 3.2 wall_solid
+LINE 41.44 -16.80 36.96 -14.56 0.0 3.2 wall_solid
+LINE 55.16 -6.16 57.12 -5.60 0.0 3.2 wall_solid
+LINE 58.24 -10.08 57.12 -10.64 0.0 3.2 wall_solid
+LINE 57.12 -5.60 59.36 -5.60 0.0 3.2 wall_solid
+LINE 59.36 -5.60 60.48 -5.60 0.0 3.2 wall_solid
+LINE 60.48 -5.60 61.60 -5.60 0.0 3.2 wall_solid
+LINE 61.60 -5.60 62.72 -5.60 0.0 3.2 wall_solid
+LINE 62.72 -5.60 63.84 -5.60 0.0 3.2 wall_solid
+LINE 63.84 -10.08 62.72 -10.08 0.0 3.2 wall_solid
+LINE 62.72 -10.08 61.60 -10.08 0.0 3.2 wall_solid
+LINE 61.60 -10.08 60.48 -10.08 0.0 3.2 wall_solid
+LINE 60.48 -10.08 59.36 -10.08 0.0 3.2 wall_solid
+LINE 59.36 -10.08 58.24 -10.08 0.0 3.2 wall_solid
+LINE 63.84 -5.60 64.96 -5.60 0.0 3.2 wall_solid
+LINE 64.96 -10.08 63.84 -10.08 0.0 3.2 wall_solid
+LINE 66.08 -10.08 64.96 -10.08 0.0 3.2 wall_solid
+LINE 64.96 -5.60 66.08 -5.60 0.0 3.2 wall_solid
+LINE 66.08 -10.08 66.08 -5.60 0.0 3.2 door
+LINE 64.96 -5.60 64.96 -10.08 0.0 3.2 door
+LINE 66.08 -13.44 66.08 -10.08 0.0 3.2 wall_solid
+LINE 57.12 -10.64 56.56 -10.64 0.0 3.2 wall_solid
+LINE 56.56 -10.64 45.92 -16.80 0.0 3.2 wall_solid
+LINE 45.92 -12.32 54.60 -6.16 0.0 3.2 wall_solid
+LINE 54.60 -6.16 55.16 -6.16 0.0 3.2 wall_solid
+LINE 39.20 -10.08 39.20 -10.64 0.0 3.2 wall_solid
+LINE 39.20 -10.64 41.44 -12.32 0.0 3.2 wall_solid
+LINE 36.96 -14.56 34.72 -10.64 0.0 3.2 wall_solid
+LINE 34.72 -10.64 34.72 -10.08 0.0 3.2 wall_solid
+LINE 63.84 25.76 59.36 28.56 0.0 3.2 wall_solid
+LINE 59.36 28.56 59.36 29.12 0.0 3.2 wall_solid
+LINE 66.08 33.60 66.64 33.60 0.0 3.2 wall_solid
+LINE 66.64 33.60 69.72 25.76 0.0 3.2 wall_solid
+LINE 82.04 16.24 84.56 6.44 0.0 3.2 wall_solid
+LINE 84.56 6.44 83.72 3.36 0.0 3.2 wall_solid
+LINE 41.44 24.36 42.56 21.28 0.0 3.2 wall_solid
+LINE 42.56 21.28 48.16 17.64 0.0 3.2 wall_solid
+LINE 48.16 17.64 58.80 17.64 0.0 3.2 wall_solid
+LINE 58.80 17.64 59.36 17.64 0.0 3.2 wall_solid
+LINE 59.36 17.64 59.36 19.88 0.0 3.2 wall_solid
+LINE 75.04 -17.92 79.52 -17.92 0.0 3.2 wall_solid
+LINE 57.12 -17.92 61.60 -17.92 0.0 3.2 wall_solid
+LINE 61.60 -17.92 63.00 -19.04 0.0 3.2 wall_solid
+LINE 64.96 -19.04 64.96 -17.92 0.0 3.2 wall_solid
+LINE 71.68 -17.92 71.68 -19.04 0.0 3.2 wall_solid
+LINE 73.64 -19.04 75.04 -17.92 0.0 3.2 wall_solid
+LINE 71.68 -25.76 71.68 -26.88 0.0 3.2 wall_solid
+LINE 71.68 -26.88 73.64 -26.88 0.0 3.2 wall_solid
+LINE 73.64 -26.88 73.64 -25.76 0.0 3.2 wall_solid
+LINE 63.00 -25.76 63.00 -26.88 0.0 3.2 wall_solid
+LINE 63.00 -26.88 64.96 -26.88 0.0 3.2 wall_solid
+LINE 64.96 -26.88 64.96 -25.76 0.0 3.2 wall_solid
+LINE 63.00 -19.04 64.12 -19.04 0.0 3.2 wall_solid
+LINE 64.12 -19.04 64.96 -19.04 0.0 3.2 wall_solid
+LINE 73.64 -25.76 72.52 -25.76 0.0 3.2 wall_solid
+LINE 72.52 -25.76 71.68 -25.76 0.0 3.2 wall_solid
+LINE 71.68 -19.04 72.52 -19.04 0.0 3.2 wall_solid
+LINE 72.52 -19.04 73.64 -19.04 0.0 3.2 wall_solid
+LINE 64.96 -25.76 64.12 -25.76 0.0 3.2 wall_solid
+LINE 64.12 -25.76 63.00 -25.76 0.0 3.2 wall_solid
+LINE 79.52 -32.48 70.56 -32.48 0.0 3.2 wall_solid
+LINE 66.08 -32.48 57.12 -32.48 0.0 3.2 wall_solid
+LINE 70.56 -32.48 70.56 -34.72 0.0 3.2 wall_solid
+LINE 66.08 -34.72 66.08 -32.48 0.0 3.2 wall_solid
+LINE 57.12 -32.48 57.12 -17.92 0.0 3.2 wall_solid
+LINE 79.52 -17.92 79.52 -32.48 0.0 3.2 wall_solid
+LINE 70.56 -34.72 69.44 -34.72 0.0 3.2 wall_solid
+LINE 67.20 -34.72 66.08 -34.72 0.0 3.2 wall_solid
+LINE 67.20 -35.56 67.20 -34.72 0.0 3.2 wall_solid
+LINE 69.44 -34.72 69.44 -35.56 0.0 3.2 wall_solid
+LINE 69.44 -35.56 69.44 -36.12 0.0 3.2 wall_solid
+LINE 69.44 -36.12 69.44 -36.96 0.0 3.2 wall_solid
+LINE 67.20 -36.96 67.20 -36.12 0.0 3.2 wall_solid
+LINE 67.20 -36.12 67.20 -35.56 0.0 3.2 wall_solid
+LINE 67.20 -36.12 69.44 -36.12 0.0 3.2 door
+LINE 69.44 -35.56 67.20 -35.56 0.0 3.2 door
+LINE 69.44 -36.96 71.68 -36.96 0.0 3.2 wall_solid
+LINE 64.96 -36.96 67.20 -36.96 0.0 3.2 wall_solid
+LINE 71.68 -36.96 71.68 -43.68 0.0 3.2 wall_solid
+LINE 64.96 -43.68 64.96 -41.44 0.0 3.2 wall_solid
+LINE 64.96 -41.44 64.96 -39.20 0.0 3.2 exit
+LINE 64.96 -39.20 64.96 -36.96 0.0 3.2 wall_solid
+LINE 71.68 -43.68 64.96 -43.68 0.0 3.2 wall_solid
+LINE 66.08 -14.00 66.08 -13.44 0.0 3.2 wall_solid
+LINE 70.56 -13.44 70.56 -14.00 0.0 3.2 wall_solid
+LINE 64.96 -17.92 66.08 -14.56 0.0 3.2 wall_solid
+LINE 66.08 -14.56 66.08 -14.00 0.0 3.2 wall_solid
+LINE 70.56 -14.00 70.56 -14.56 0.0 3.2 wall_solid
+LINE 70.56 -14.56 71.68 -17.92 0.0 3.2 wall_solid
+LINE 70.56 -14.00 66.08 -14.00 0.0 3.2 door
+LINE 66.08 -14.56 70.56 -14.56 0.0 3.2 door
+LINE 59.36 24.64 63.84 24.64 0.0 3.2 wall_solid
+LINE 21.28 43.68 19.04 43.68 0.0 3.2 wall_solid
+LINE 19.04 43.68 19.04 52.64 0.0 3.2 wall_solid
+LINE 19.04 34.72 21.28 34.72 0.0 3.2 wall_solid
+LINE 52.64 52.64 52.64 39.20 0.0 3.2 wall_solid
+LINE 52.64 39.20 50.40 39.20 0.0 3.2 wall_solid
+LINE 39.20 30.24 39.20 28.00 0.0 3.2 wall_solid
+LINE 19.04 54.88 21.28 54.88 0.0 3.2 wall_solid
+LINE 21.28 54.88 50.40 54.88 0.0 3.2 wall_solid
+LINE 50.40 54.88 52.64 54.88 0.0 3.2 wall_solid
+LINE 52.64 54.88 52.64 52.64 0.0 3.2 wall_solid
+LINE 19.04 52.64 19.04 54.88 0.0 3.2 wall_solid
+LINE 21.28 28.00 19.04 28.00 0.0 3.2 wall_solid
+LINE 19.04 28.00 19.04 30.24 0.0 3.2 wall_solid
+LINE 19.04 30.24 19.04 34.72 0.0 3.2 wall_solid
+LINE 50.40 32.48 50.40 30.24 0.0 3.2 wall_solid
+LINE 54.88 29.12 51.24 32.48 0.0 3.2 wall_solid
+LINE 50.40 36.96 51.24 36.96 0.0 3.2 wall_solid
+LINE 51.24 32.48 50.40 32.48 0.0 3.2 wall_solid
+LINE 21.28 34.72 21.28 35.56 0.0 3.2 wall_solid
+LINE 21.28 35.56 21.28 36.96 0.0 3.2 wall_solid
+LINE 21.28 41.44 21.28 42.84 0.0 3.2 wall_solid
+LINE 21.28 42.84 21.28 43.68 0.0 3.2 wall_solid
+LINE 50.40 39.20 50.40 38.36 0.0 3.2 wall_solid
+LINE 50.40 38.36 50.40 36.96 0.0 3.2 wall_solid
+LINE 50.40 30.24 40.04 30.24 0.0 3.2 wall_solid
+LINE 40.04 30.24 39.20 30.24 0.0 3.2 wall_solid
+LINE 36.96 35.84 44.80 35.84 0.0 3.2 wall_solid
+LINE 44.80 35.84 44.80 47.04 0.0 3.2 wall_solid
+LINE 44.80 47.04 36.96 47.04 0.0 3.2 wall_solid
+LINE 36.96 47.04 36.96 45.92 0.0 3.2 wall_solid
+LINE 36.96 45.92 38.08 45.92 0.0 3.2 wall_solid
+LINE 38.08 45.92 39.20 45.92 0.0 3.2 wall_solid
+LINE 39.20 45.92 40.32 45.92 0.0 3.2 wall_solid
+LINE 40.32 45.92 43.68 45.92 0.0 3.2 wall_solid
+LINE 43.68 45.92 43.68 36.96 0.0 3.2 wall_solid
+LINE 43.68 36.96 40.32 36.96 0.0 3.2 wall_solid
+LINE 40.32 36.96 39.20 36.96 0.0 3.2 wall_solid
+LINE 39.20 36.96 38.08 36.96 0.0 3.2 wall_solid
+LINE 38.08 36.96 36.96 36.96 0.0 3.2 wall_solid
+LINE 36.96 36.96 36.96 35.84 0.0 3.2 wall_solid
+LINE 86.24 -10.08 79.52 -12.32 0.0 3.2 wall_solid
+LINE 75.04 -12.32 75.04 -4.48 0.0 3.2 wall_solid
+LINE 79.52 -4.48 80.64 -1.12 0.0 3.2 wall_solid
+LINE 83.72 3.36 84.56 3.36 0.0 3.2 wall_solid
+LINE 84.56 3.36 86.24 1.12 0.0 3.2 wall_solid
+LINE 80.64 -1.12 80.36 0.84 0.0 3.2 wall_solid
+LINE 80.36 0.84 80.36 1.68 0.0 3.2 wall_solid
+LINE 79.52 -12.32 78.68 -12.32 0.0 3.2 wall_solid
+LINE 78.68 -12.32 75.04 -12.32 0.0 3.2 wall_solid
+LINE 75.04 -4.48 78.68 -4.48 0.0 3.2 wall_solid
+LINE 78.68 -4.48 79.52 -4.48 0.0 3.2 wall_solid
+LINE 45.92 -16.80 45.08 -16.80 0.0 3.2 wall_solid
+LINE 45.08 -16.80 42.28 -16.80 0.0 3.2 wall_solid
+LINE 42.28 -16.80 41.44 -16.80 0.0 3.2 wall_solid
+LINE 41.44 -12.32 42.28 -12.32 0.0 3.2 wall_solid
+LINE 42.28 -12.32 45.08 -12.32 0.0 3.2 wall_solid
+LINE 45.08 -12.32 45.92 -12.32 0.0 3.2 wall_solid
+LINE 39.20 -2.24 39.20 -3.08 0.0 3.2 wall_solid
+LINE 39.20 -3.08 39.20 -5.60 0.0 3.2 wall_solid
+LINE 34.72 -5.60 34.72 -3.08 0.0 3.2 wall_solid
+LINE 34.72 -3.08 34.72 -2.24 0.0 3.2 wall_solid
+LINE 86.24 1.12 86.24 -7.84 0.0 3.2 wall_solid
+LINE 91.84 -10.08 88.48 -10.08 0.0 3.2 wall_solid
+LINE 94.08 -6.72 91.84 -10.08 0.0 3.2 wall_solid
+LINE 88.48 -7.84 89.60 -5.60 0.0 3.2 wall_solid
+LINE 89.60 -5.60 87.36 2.24 0.0 3.2 wall_solid
+LINE 87.36 2.24 87.36 7.84 0.0 3.2 wall_solid
+LINE 87.36 7.84 90.72 12.32 0.0 3.2 wall_solid
+LINE 91.84 2.24 94.08 -6.72 0.0 3.2 wall_solid
+LINE 91.84 7.84 91.84 2.24 0.0 3.2 wall_solid
+LINE 96.32 12.32 91.84 7.84 0.0 3.2 wall_solid
+LINE 90.72 12.32 85.40 20.44 0.0 3.2 wall_solid
+LINE 88.48 25.76 96.32 12.32 0.0 3.2 wall_solid
+LINE 85.40 20.44 84.00 20.44 0.0 3.2 wall_solid
+LINE 80.64 25.76 88.48 25.76 0.0 3.2 wall_solid
+LINE 78.68 20.16 79.24 20.16 0.0 3.2 wall_solid
+LINE 79.24 20.16 80.64 25.76 0.0 3.2 wall_solid
+LINE 84.00 20.44 82.60 16.24 0.0 3.2 wall_solid
+LINE 82.60 16.24 82.04 16.24 0.0 3.2 wall_solid
+LINE 86.24 -7.84 86.80 -7.84 0.0 3.2 wall_solid
+LINE 86.80 -7.84 88.48 -7.84 0.0 3.2 wall_solid
+LINE 88.48 -10.08 86.80 -10.08 0.0 3.2 wall_solid
+LINE 86.80 -10.08 86.24 -10.08 0.0 3.2 wall_solid
+LINE 10.08 8.96 10.08 7.84 0.0 3.2 wall_solid
+LINE 10.08 3.36 10.08 2.24 0.0 3.2 wall_solid
+LINE 10.08 7.84 11.20 7.84 0.0 3.2 wall_solid
+LINE 11.20 3.36 10.08 3.36 0.0 3.2 wall_solid
+LINE 11.20 -1.12 11.20 3.36 0.0 3.2 wall_solid
+LINE 11.20 7.84 11.20 8.96 0.0 3.2 wall_solid
+LINE 11.20 3.36 11.20 7.84 0.0 3.2 door
+LINE 14.56 25.76 21.28 25.76 0.0 3.2 wall_solid
+LINE 39.20 24.36 41.44 24.36 0.0 3.2 wall_solid
+LINE 39.20 28.00 39.20 24.36 0.0 3.2 wall_solid
+LINE 21.28 25.76 21.28 28.00 0.0 3.2 wall_solid
 
-# --- Zentrales Hexagon-Podest / Hindernis ---
-LINE -4.0 -2.0  -2.0 -4.0  0.0 3.0 pillar
-LINE -2.0 -4.0   2.0 -4.0  0.0 3.0 pillar
-LINE  2.0 -4.0   4.0 -2.0  0.0 3.0 pillar
-LINE  4.0 -2.0   4.0  2.0  0.0 3.0 pillar
-LINE  4.0  2.0   2.0  4.0  0.0 3.0 pillar
-LINE  2.0  4.0  -2.0  4.0  0.0 3.0 pillar
-LINE -2.0  4.0  -4.0  2.0  0.0 3.0 pillar
-LINE -4.0  2.0  -4.0 -2.0  0.0 3.0 pillar
-
-# --- Westliche Deckung (L-Wand) ---
-LINE -12.0 -10.0 -8.0 -10.0  0.0 2.5 cover
-LINE -12.0 -10.0 -12.0 -6.0  0.0 2.5 cover
-
-# --- Östliche Deckung (L-Wand) ---
-LINE 12.0 10.0 8.0 10.0  0.0 2.5 cover
-LINE 12.0 10.0 12.0 6.0  0.0 2.5 cover
-
-# --- Südliche Barrikade ---
-LINE -6.0 14.0  6.0 14.0  0.0 2.0 barricade
-
-# --- Nördliche Barrikade ---
-LINE -6.0 -14.0 6.0 -14.0 0.0 2.0 barricade
-
-# --- Things (Player Start & Drohnen-Spawns) ---
-# Type 1 = Player Start, Type 2 = Cyber Drone Spawner, Type 3 = Powerup / Ammo
 THING 0.0 0.0 0.5 1 0.0
-THING -15.0 -15.0 1.0 2 45.0
-THING  15.0 -15.0 1.0 2 135.0
-THING  15.0  15.0 1.0 2 225.0
-THING -15.0  15.0 1.0 2 315.0
-THING 0.0 -10.0 0.5 3 0.0
-THING 0.0  10.0 0.5 3 0.0
-
+THING 83.44 5.04 1.0 2 0.0
+THING 80.64 3.92 1.0 2 0.0
+THING 64.96 28.00 1.0 2 0.0
+THING 70.00 1.12 1.0 2 0.0
+THING 72.80 7.28 1.0 2 0.0
+THING 26.88 11.76 0.5 3 0.0
+THING 58.80 -22.40 1.0 2 0.0
+THING 77.84 -22.40 1.0 2 0.0
+THING 68.32 -28.00 1.0 2 0.0
+THING 77.84 -24.08 1.0 2 0.0
+THING 58.80 -24.08 1.0 2 0.0
+THING 63.84 -28.00 0.5 3 0.0
+THING 58.80 -19.04 0.5 3 0.0
+THING 77.84 -19.04 0.5 3 0.0
+THING 60.48 23.52 0.5 3 0.0
+THING -31.92 16.80 0.5 3 0.0
+THING -31.92 10.08 0.5 3 0.0
+THING -33.60 7.84 0.5 3 0.0
+THING -33.60 19.04 0.5 3 0.0
+THING -21.84 20.16 0.5 3 0.0
+THING -21.84 6.72 0.5 3 0.0
+THING -35.84 13.44 0.5 3 0.0
+THING -38.08 13.44 0.5 3 0.0
+THING 8.96 3.36 0.5 3 0.0
+THING -11.20 3.36 0.5 3 0.0
+THING -10.64 21.84 0.5 3 0.0
+THING -2.80 24.64 0.5 3 0.0
+THING 56.56 30.24 0.5 3 0.0
+THING 59.36 34.16 0.5 3 0.0
+THING 62.72 1.12 0.5 3 0.0
+THING 68.32 -12.32 0.5 3 0.0
+THING 74.48 -19.60 0.5 3 0.0
+THING 62.16 -19.60 0.5 3 0.0
+THING 58.80 -20.16 0.5 3 0.0
+THING 77.84 -20.16 0.5 3 0.0
+THING 77.84 -29.12 0.5 3 0.0
+THING 58.80 -29.12 0.5 3 0.0
+THING 70.56 -42.56 0.5 3 0.0
+THING 66.08 -42.56 0.5 3 0.0
+THING 70.56 -38.08 0.5 3 0.0
+THING 66.08 -38.08 0.5 3 0.0
+THING 68.32 -42.00 1.0 2 0.0
+THING 70.56 -40.32 0.5 3 0.0
+THING 43.68 -14.56 0.5 3 0.0
+THING 39.20 -13.44 0.5 3 0.0
+THING 48.16 -13.44 0.5 3 0.0
+THING -44.80 13.44 0.5 3 0.0
+THING 22.96 12.32 0.5 3 0.0
+THING 30.80 12.32 0.5 3 0.0
+THING 30.24 -3.36 0.5 3 0.0
+THING 43.68 -3.36 0.5 3 0.0
+THING 76.16 -19.04 0.5 3 0.0
+THING 76.16 -20.16 0.5 3 0.0
+THING 60.48 -20.16 0.5 3 0.0
+THING 52.64 -10.08 0.5 3 0.0
+THING 80.64 2.80 0.5 3 0.0
+THING 68.32 -40.32 0.5 3 0.0
+THING 12.32 1.12 0.5 3 0.0
+THING 12.32 5.60 0.5 3 0.0
+THING 12.32 10.08 0.5 3 0.0
+THING 42.56 41.44 1.0 2 0.0
+THING 42.56 44.24 1.0 2 0.0
+THING 42.56 38.64 1.0 2 0.0
+THING 49.28 41.44 1.0 2 0.0
+THING 40.88 45.36 0.5 3 0.0
+THING 40.88 37.52 0.5 3 0.0
+THING 43.12 37.52 0.5 3 0.0
+THING 43.12 45.36 0.5 3 0.0
+THING 22.96 51.52 0.5 3 0.0
+THING 41.44 47.60 0.5 3 0.0
+THING 77.28 -8.40 0.5 3 0.0
+THING 77.28 -11.20 0.5 3 0.0
+THING 76.16 -6.72 0.5 3 0.0
+THING 75.60 -9.52 1.0 2 0.0
+THING -42.56 13.44 1.0 2 0.0
+THING -28.56 8.40 1.0 2 0.0
+THING -28.56 18.48 1.0 2 0.0
+THING 22.40 32.48 1.0 2 0.0
+THING 30.24 50.40 1.0 2 0.0
+THING 67.20 12.32 1.0 2 0.0
+THING 68.32 3.36 1.0 2 0.0
+THING 68.32 19.04 1.0 2 0.0
+THING 61.60 32.48 1.0 2 0.0
+THING 50.40 -12.32 1.0 2 0.0
+THING 42.00 -15.68 1.0 2 0.0
+THING 70.56 -22.40 1.0 2 0.0
+THING -43.68 11.20 1.0 2 0.0
+THING 90.72 -1.12 0.5 3 0.0
+THING 89.60 7.84 0.5 3 0.0
+THING 92.96 12.32 0.5 3 0.0
+THING 84.56 22.96 0.5 3 0.0
+THING 81.20 20.72 0.5 3 0.0
+THING 87.92 21.84 0.5 3 0.0
+THING 89.60 18.48 0.5 3 0.0
+THING 91.28 15.68 0.5 3 0.0
+THING 90.72 -7.84 0.5 3 0.0
+THING -28.00 6.72 0.5 3 0.0
+THING -11.20 22.40 0.5 3 0.0

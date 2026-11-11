@@ -67,9 +67,19 @@ func _spawn_next_batch() -> void:
 	if spawner_positions.is_empty():
 		return
 	var count = mini(2, drone_pool.get_available_count())
+	var candidates: Array[Vector3] = []
+	if is_instance_valid(player):
+		var p_pos = player.global_position
+		for sp in spawner_positions:
+			var d = p_pos.distance_to(sp)
+			if d >= 5.0 and d <= 35.0:
+				candidates.append(sp)
+	if candidates.is_empty():
+		candidates = spawner_positions
+
 	for i in range(count):
-		var sp_pos = spawner_positions[randi() % spawner_positions.size()]
-		var offset = Vector3(randf_range(-1.5, 1.5), 0, randf_range(-1.5, 1.5))
+		var sp_pos = candidates[randi() % candidates.size()]
+		var offset = Vector3(randf_range(-1.0, 1.0), 0, randf_range(-1.0, 1.0))
 		spawn_drone_at(sp_pos + offset)
 
 func _perform_broadphase_collision() -> void:
