@@ -7,7 +7,7 @@ signal expired(projectile: Projectile3D)
 
 @export var speed: float = 35.0
 @export var max_lifetime: float = 2.0
-@export var collision_radius: float = 0.3
+@export var collision_radius: float = 0.35
 
 var velocity: Vector3 = Vector3.ZERO
 var current_lifetime: float = 0.0

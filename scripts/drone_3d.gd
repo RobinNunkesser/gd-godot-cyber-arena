@@ -7,7 +7,7 @@ extends Node3D
 signal destroyed(drone: Drone3D)
 
 @export var speed: float = 4.2
-@export var collision_radius: float = 0.7
+@export var collision_radius: float = 0.9
 @export var max_health: int = 1
 
 var current_health: int = 1
@@ -17,7 +17,7 @@ var mesh_instance: MeshInstance3D = null
 func _init() -> void:
 	mesh_instance = MeshInstance3D.new()
 	var prism = PrismMesh.new()
-	prism.size = Vector3(1.2, 0.8, 1.2)
+	prism.size = Vector3(1.5, 1.2, 1.5)
 
 	var mat = StandardMaterial3D.new()
 	mat.albedo_color = Color(1.0, 0.2, 0.3)
@@ -38,10 +38,13 @@ func on_pool_release() -> void:
 	target_node = null
 
 func spawn(pos: Vector3, target: Node3D) -> void:
+	var spawn_pos = pos
+	# Auf Brust-/Augenhöhe (1.4m) schweben lassen
+	spawn_pos.y = 1.4
 	if is_inside_tree():
-		global_position = pos
+		global_position = spawn_pos
 	else:
-		position = pos
+		position = spawn_pos
 	target_node = target
 	current_health = max_health
 

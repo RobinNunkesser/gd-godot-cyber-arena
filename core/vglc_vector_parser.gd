@@ -31,12 +31,12 @@ class VectorThing extends RefCounted:
 
 var lines: Array[VectorLine] = []
 var things: Array[VectorThing] = []
-var player_start_pos: Vector3 = Vector3(0, 0.5, 0)
+var player_start_pos: Vector3 = Vector3(0, 0.0, 0)
 
 func clear() -> void:
 	lines.clear()
 	things.clear()
-	player_start_pos = Vector3(0, 0.5, 0)
+	player_start_pos = Vector3(0, 0.0, 0)
 
 static func parse_file(path: String) -> RefCounted:
 	var parser = new()
